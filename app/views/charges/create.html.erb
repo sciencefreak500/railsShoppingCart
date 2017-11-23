@@ -1,0 +1,23 @@
+<h2>Thank you for your Purchase!</h2>
+<br>
+<h2>Purchase Details</h2>
+
+<hr>
+<% current_order.order_items.each do |order_item| %>
+<div>
+	<span>Product Name: </span><%= order_item.product.name %> <br>
+	<span>Unit Price: </span><%= number_to_currency order_item.unit_price %> <br>
+	<span>Quantity: </span><%= order_item.quantity %> <br>
+	<span>Total Price: </span><%= number_to_currency order_item.total_price %> <br>
+	<hr>
+</div>
+	
+  <% end %>
+ <h3>Total Purchase: <%= number_to_currency current_order.subtotal%></h3>
+  
+<h3><%= link_to "Back to Home", root_path %></h3>
+
+
+<% current_order.order_items.each do |order_item| %>
+	<span style="display:none"><%= order_item.destroy %></span>
+<% end %>
